@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messaggio Speciale</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffb6c1; /* Rosa tenue */
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        #container {
+            text-align: center;
+            display: none;
+        }
+
+        #message {
+            font-size: 2em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #flower {
+            display: none;
+            margin-top: 20px;
+            width: 100px; /* Dimensione del fiore */
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff69b4; /* Rosa acceso */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="message">So che a volte sbaglio ...</div>
+        <button onclick="nextMessage()">Continua</button>
+        <img id="flower" src="https://cdn-icons-png.flaticon.com/512/616/616466.png" alt="Fiore" width="100">
+    </div>
+
+    <script>
+        // Messaggi da visualizzare
+        const messages = [
+            "So che a volte sbaglio ...",
+            "Ma è la prima volta anche per me ...",
+            "Ti amo, facciamo pace?"
+        ];
+        let currentMessage = 0;
+
+        // Mostra il primo messaggio all'inizio
+        document.getElementById('container').style.display = 'block';
+
+        function nextMessage() {
+            currentMessage++;
+            if (currentMessage < messages.length) {
+                document.getElementById('message').innerText = messages[currentMessage];
+                document.getElementById('message').style.animation = 'fadeIn 2s ease-in-out'; // Riapplica l'animazione
+            } else {
+                document.getElementById('flower').style.display = 'block'; // Mostra il fiore
+                document.getElementById('message').innerText = ""; // Nasconde il messaggio finale
+            }
+        }
+    </script>
+</body>
+</html>
+
